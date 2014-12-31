@@ -66,7 +66,7 @@
                     
                     <form action="<c:url value="/documentToIndex"/>">
                          <label>Dirección PDFS </label>
-                         <input type="text" name="folder" value="/"><br>
+                         <input type="text" name="folder" value="/" style="width:700px"><br>
                          <input type="submit" value="Submit">
                     </form>
 
