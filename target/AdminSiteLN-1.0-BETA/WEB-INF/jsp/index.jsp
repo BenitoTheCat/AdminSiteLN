@@ -64,11 +64,13 @@
                         Por ejemplo, /Users/Server/Pdf</div>
                   
                     
-                    <form action="<c:url value="/documentToIndex"/>">
+                    <form action="<c:url value="/documentToIndex"/>" id="formindex">
                          <label>Dirección PDFS </label>
-                         <input type="text" name="folder" value="/"><br>
+                         
+                         <textarea  form ="formindex" rows="5" cols="83" name="folder" form="usrform">/</textarea>
                          <input type="submit" value="Submit">
                     </form>
+
 
 
 
