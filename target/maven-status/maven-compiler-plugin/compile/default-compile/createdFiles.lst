@@ -1,6 +1,11 @@
 com/lanacion/adminsiteln/controllers/DefaultController.class
-com/lanacion/adminsiteln/services/PdfIndexerService/PdfIndexerService.class
+com/lanacion/adminsiteln/service/infografia/InfografiaServiceImpl.class
+com/lanacion/adminsiteln/dao/infografiasrepository/InfografiasRepository.class
 com/lanacion/adminsiteln/config/Config.class
-com/lanacion/adminsiteln/config/WebInitializer.class
+com/lanacion/adminsiteln/services/PdfIndexerService/PdfIndexerService.class
+com/lanacion/adminsiteln/model/infografia/InfografiaDocument.class
+com/lanacion/adminsiteln/service/infografia/InfografiaService.class
 com/lanacion/adminsiteln/model/lndocument/LaNacionDocument.class
 com/lanacion/adminsiteln/config/SolrConnection.class
+com/lanacion/adminsiteln/config/WebInitializer.class
+com/lanacion/adminsiteln/dao/infografiasrepository/InfografiaMapper.class

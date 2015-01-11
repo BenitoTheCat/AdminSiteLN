@@ -9,6 +9,8 @@ package com.lanacion.adminsiteln.controllers;
  *
  * @author Luxo
  */
+import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
+import com.lanacion.adminsiteln.service.infografia.InfografiaService;
 import com.lanacion.adminsiteln.services.PdfIndexerService.PdfIndexerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,6 +30,9 @@ public class DefaultController {
     
    @Autowired
    private PdfIndexerService indexService;
+   
+   @Autowired
+   private InfografiaService infoService;
     
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String index(ModelMap map) {
@@ -60,6 +65,13 @@ public class DefaultController {
    public String getTemplate() {
        
        return "template";
+   }
+   
+   @RequestMapping(value = "/test", method = RequestMethod.GET)
+   @ResponseBody
+   public InfografiaDocument getTest() {
+       
+       return infoService.getInfografia(1);
    }
     
 }

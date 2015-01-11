@@ -1,6 +1,12 @@
+/Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/service/infografia/InfografiaServiceImpl.java
 /Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/config/Config.java
 /Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/model/lndocument/LaNacionDocument.java
 /Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/config/WebInitializer.java
+/Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/model/infografia/InfografiaDocument.java
 /Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/controllers/DefaultController.java
+/Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/dao/infografiasrepository/InfografiasRepositoryImpl.java
 /Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/config/SolrConnection.java
+/Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/dao/infografiasrepository/InfografiaMapper.java
+/Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/dao/infografiasrepository/InfografiasRepository.java
+/Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/service/infografia/InfografiaService.java
 /Users/Luxo/NetBeansProjects/AdminSiteLN/src/main/java/com/lanacion/adminsiteln/services/PdfIndexerService/PdfIndexerService.java
