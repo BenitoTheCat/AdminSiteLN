@@ -12,6 +12,7 @@ package com.lanacion.adminsiteln.controllers;
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
 import com.lanacion.adminsiteln.service.infografia.InfografiaService;
 import com.lanacion.adminsiteln.services.PdfIndexerService.PdfIndexerService;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,6 +73,33 @@ public class DefaultController {
    public InfografiaDocument getTest() {
        
        return infoService.getInfografia(1);
+   
+   }
+   
+   @RequestMapping(value = "/testlist", method = RequestMethod.GET)
+   @ResponseBody
+   public List<InfografiaDocument> getList() {
+       
+       return infoService.listInfografias();
+   
+   }
+   
+   @RequestMapping(value = "/testcrea", method = RequestMethod.GET)
+   @ResponseBody
+   public String getTestcrea() {
+       
+       infoService.create("titulo desde spring", "desde spring", 1, Integer.SIZE);
+       
+       return "Donde";
+   }
+   
+   @RequestMapping(value = "/testdel", method = RequestMethod.GET)
+   @ResponseBody
+   public String getTestdel() {
+       
+       infoService.delete(3);
+       
+       return "Donde borrado";
    }
     
 }

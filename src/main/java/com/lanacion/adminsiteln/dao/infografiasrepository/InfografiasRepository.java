@@ -18,34 +18,48 @@ public interface InfografiasRepository {
     /** 
     * This is the method to be used to initialize
     * database resources ie. connection.
+     * @param ds
     */
    public void setDataSource(DataSource ds);
    /** 
     * This is the method to be used to create
     * a record in the Student table.
+     * @param titulo
+     * @param descripcion
+     * @param tipo_infografia
+     * @param estado
     */
-   public void create(String name, Integer age);
+   public void create(String titulo, String descripcion, Integer tipo_infografia, Integer estado);
    /** 
     * This is the method to be used to list down
     * a record from the Student table corresponding
     * to a passed student id.
+     * @param id
+     * @return 
     */
    public InfografiaDocument getInfografia(Integer id);
    /** 
     * This is the method to be used to list down
     * all the records from the Student table.
+     * @return 
     */
    public List<InfografiaDocument> listInfografias();
    /** 
     * This is the method to be used to delete
     * a record from the Student table corresponding
     * to a passed student id.
+     * @param id
     */
    public void delete(Integer id);
    /** 
     * This is the method to be used to update
     * a record into the Student table.
+     * @param idInfografia
+     * @param titulo
+     * @param descripcion
+     * @param tipo_infografia
+     * @param estado
     */
-   public void update(Integer id, Integer age);
+   public void update(Integer idInfografia, String titulo, String descripcion, Integer tipo_infografia, Integer estado);
     
 }

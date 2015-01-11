@@ -17,12 +17,12 @@ import org.springframework.jdbc.core.RowMapper;
 public class InfografiaMapper implements RowMapper<InfografiaDocument> {
 
     public InfografiaDocument mapRow(ResultSet rs, int rowNum) throws SQLException {
-        System.out.println("LLevo al Mapper");
         InfografiaDocument infografia = new InfografiaDocument();
         infografia.setIdInfografia(rs.getInt("idInfografia"));
         infografia.setTitulo(rs.getString("titulo"));
         infografia.setDescripcion(rs.getString("descripcion"));
         infografia.setEstado(rs.getInt("estado"));
+        infografia.setTipo_infografia(rs.getInt("tipo_infografia"));
         infografia.setFecha_creacion(rs.getDate("fecha_creacion"));
         infografia.setFecha_modificacion(rs.getDate("fecha_modificacion"));
         return infografia;

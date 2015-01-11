@@ -9,3 +9,4 @@ com/lanacion/adminsiteln/model/lndocument/LaNacionDocument.class
 com/lanacion/adminsiteln/config/SolrConnection.class
 com/lanacion/adminsiteln/config/WebInitializer.class
 com/lanacion/adminsiteln/dao/infografiasrepository/InfografiaMapper.class
+com/lanacion/adminsiteln/dao/infografiasrepository/InfografiasRepositoryImpl.class

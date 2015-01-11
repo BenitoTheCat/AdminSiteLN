@@ -19,7 +19,7 @@ public class InfografiaDocument {
     
     private String descripcion;
     
-    private String tipo_infografia;
+    private Integer tipo_infografia;
     
     private Date fecha_creacion;
     
@@ -51,11 +51,11 @@ public class InfografiaDocument {
         this.descripcion = descripcion;
     }
 
-    public String getTipo_infografia() {
+    public Integer getTipo_infografia() {
         return tipo_infografia;
     }
 
-    public void setTipo_infografia(String tipo_infografia) {
+    public void setTipo_infografia(Integer tipo_infografia) {
         this.tipo_infografia = tipo_infografia;
     }
 

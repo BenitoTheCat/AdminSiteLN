@@ -52,22 +52,15 @@ public class InfografiasRepositoryImpl implements InfografiasRepository{
    }
 
  @Override
-   public void create(String name, Integer age) {
-      String SQL = "insert into Student (name, age) values (?, ?)";
+   public void create(String titulo, String descripcion, Integer tipo_infografia, Integer estado) {
+      String SQL = "insert into Infografias (titulo, descripcion,tipo_infografia,fecha_creacion,fecha_modificacion,estado) values (?, ?, ?, sysdate(), sysdate(), ?)";
       
-      jdbcTemplateObject.update( SQL, name, age);
-      System.out.println("Created Record Name = " + name + " Age = " + age);
+      jdbcTemplateObject.update( SQL, titulo, descripcion,tipo_infografia,estado);
+      System.out.println("Created Record Titulo = " + titulo + " Descripcion = " + descripcion);
    }
 
  @Override
    public InfografiaDocument getInfografia(Integer idInfografia) {
-     try {
-         System.out.println("Conexion:````` "+dataSource.toString());
-         ResultSet executeQuery = dataSource.getConnection().prepareCall("select * from Infografias where idInfografia = 1").executeQuery();
-         System.out.println("Query executeQuery "+executeQuery);
-     } catch (SQLException ex) {
-         Logger.getLogger(InfografiasRepositoryImpl.class.getName()).log(Level.SEVERE, null, ex);
-     }
       String SQL = "select * from Infografias where idInfografia = ?";
       InfografiaDocument infografia = jdbcTemplateObject.queryForObject(SQL, 
                         new Object[]{idInfografia}, new InfografiaMapper());
@@ -76,7 +69,7 @@ public class InfografiasRepositoryImpl implements InfografiasRepository{
 
  @Override
    public List<InfografiaDocument> listInfografias() {
-      String SQL = "select * from Student";
+      String SQL = "select * from Infografias";
       List <InfografiaDocument> infografias = jdbcTemplateObject.query(SQL, 
                                 new InfografiaMapper());
       return infografias;
@@ -84,16 +77,16 @@ public class InfografiasRepositoryImpl implements InfografiasRepository{
 
  @Override
    public void delete(Integer id){
-      String SQL = "delete from Student where id = ?";
+      String SQL = "delete from Infografias where idInfografia = ?";
       jdbcTemplateObject.update(SQL, id);
       System.out.println("Deleted Record with ID = " + id );
    }
 
  @Override
-   public void update(Integer id, Integer age){
-      String SQL = "update Student set age = ? where id = ?";
-      jdbcTemplateObject.update(SQL, age, id);
-      System.out.println("Updated Record with ID = " + id );
+   public void update(Integer idInfografia, String titulo, String descripcion, Integer tipo_infografia, Integer estado){
+      String SQL = "update Infografias set titulo = ?, descripcion = ?, tipo_infografia =?, estado=?, fecha_modificacion=sysdate() where idInfografia = ?";
+      jdbcTemplateObject.update(SQL, titulo, descripcion, tipo_infografia, estado, idInfografia);
+      System.out.println("Updated Record with ID = " + idInfografia );
    }
 
 }
