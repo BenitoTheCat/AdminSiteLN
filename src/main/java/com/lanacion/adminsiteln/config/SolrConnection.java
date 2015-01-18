@@ -15,9 +15,12 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.apache.solr.client.solrj.SolrQuery;
 
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 
 /**
@@ -27,7 +30,7 @@ import org.apache.solr.common.SolrInputDocument;
 public class SolrConnection {
 
     private static int fetchSize = 1000;
-    private static String url = "http://localhost:8080/solr/LaNacionIndex/";
+    private static String url = "http://localhost:8983/solr/LaNacionIndex/";
     private static HttpSolrServer solrCore;
 
     public SolrConnection() throws MalformedURLException {
@@ -71,6 +74,25 @@ public class SolrConnection {
         }
         solrCore.commit();
         return 1;
+    }
+    
+    public int countDocuments(String UserQuery) throws SolrServerException{
+        SolrQuery query = new SolrQuery();
+        if(UserQuery.length()>0){
+            query.setQuery(UserQuery);
+        }else{
+            query.setQuery("*:*");
+        }
+        //query.addFilterQuery("cat:electronics","store:amazon.com");
+        query.setFields("titulo","cuerpo");
+        query.setStart(0);   
+        query.setRows(10000);
+        query.set("defType", "edismax");
+
+        QueryResponse response = solrCore.query(query);
+        SolrDocumentList results = response.getResults();
+        
+        return results.size();
     }
 
 }

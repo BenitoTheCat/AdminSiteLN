@@ -23,4 +23,14 @@ public interface InfografiaService {
     public void delete(Integer id);
     
     public void update(Integer idInfografia, String titulo, String descripcion, Integer tipo_infografia, Integer estado);
+    
+    public int getCountQuery(String UserQuery);
+    
+    public void createVistas(String titulo, String querysolr);
+    
+    public Integer getLastIdVista();
+    
+    public Integer getLastIdInfografia();
+    
+    public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden);
 }

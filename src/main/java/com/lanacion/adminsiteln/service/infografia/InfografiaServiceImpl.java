@@ -7,7 +7,11 @@ package com.lanacion.adminsiteln.service.infografia;
 
 import com.lanacion.adminsiteln.dao.infografiasrepository.InfografiasRepository;
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
+import com.lanacion.adminsiteln.services.PdfIndexerService.PdfIndexerService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,6 +24,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class InfografiaServiceImpl implements InfografiaService {
+    
+    
+    @Autowired
+    private PdfIndexerService solrconn;
+           
     
     @Autowired
     private ApplicationContext context = new ClassPathXmlApplicationContext("MySqlBean.xml");
@@ -52,4 +61,33 @@ public class InfografiaServiceImpl implements InfografiaService {
         infoRepo.update(idInfografia, titulo, descripcion, tipo_infografia, estado);
     }
     
+    @Override
+    public int getCountQuery(String UserQuery){
+        try {
+            return solrconn.countDocuments(UserQuery);
+        } catch (SolrServerException ex) {
+            Logger.getLogger(InfografiaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
+    @Override
+    public void createVistas(String titulo, String querysolr){
+        infoRepo.createVistas(titulo, querysolr);
+    }
+    
+    @Override
+    public Integer getLastIdVista(){
+        return infoRepo.getLastIdVista();
+    }
+    
+    @Override
+    public Integer getLastIdInfografia(){
+        return infoRepo.getLastIdInfografia();
+    }
+    
+    @Override
+    public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden){
+        infoRepo.createRelacionInfografiaVista(lastIdInfografia, lastIdVista, id_orden);
+    }
 }

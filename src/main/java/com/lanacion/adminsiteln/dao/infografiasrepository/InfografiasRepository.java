@@ -61,5 +61,32 @@ public interface InfografiasRepository {
      * @param estado
     */
    public void update(Integer idInfografia, String titulo, String descripcion, Integer tipo_infografia, Integer estado);
+   
+    /**
+     *
+     * @param titulo
+     * @param querysolr
+     */
+    public void createVistas(String titulo, String querysolr);
+    
+    /**
+     *
+     * @return
+     */
+    public Integer getLastIdVista();
+    
+    /**
+     *
+     * @return
+     */
+    public Integer getLastIdInfografia();
+    
+    /**
+     *
+     * @param lastIdInfografia
+     * @param lastIdVista
+     * @param id_orden
+     */
+    public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden);
     
 }

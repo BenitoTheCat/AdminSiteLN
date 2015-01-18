@@ -25,6 +25,15 @@
 
         <link href="resources/css/styles.css" rel="stylesheet" type="text/css" />
         <link href="resources/css/facebox.css" rel="stylesheet" type="text/css" />
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -60,7 +69,7 @@
                 <div id="primary_content">
 
                     <h2>Demo indexador Solr</h2>
-                    <div class="information canhide" style="height:50px">Por favor, introdusca la url en donde se encuentrar los archivos pdf a indexar del computador en donde se encuentra el server. 
+                    <div class="information canhide" style="height:80px">Por favor, introdusca la url en donde se encuentrar los archivos pdf a indexar del computador en donde se encuentra el server. 
                         Por ejemplo, /Users/Server/Pdf</div>
                   
                     

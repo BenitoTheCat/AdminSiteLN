@@ -22,10 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
  
-/**
-*
-* @author john
-*/
 @Controller
 public class DefaultController {
     
@@ -60,6 +56,13 @@ public class DefaultController {
    public String indexDocument(@RequestParam(value = "folder", required = false) String stringFolder) {
        return indexService.indexPDFToSolr(stringFolder);
        //return "Dode";
+   }
+   
+   @RequestMapping(value = "/dashboard/create", method = RequestMethod.GET)
+   public String getDashboard() {
+       
+       
+       return "dashboard_create";
    }
    
    @RequestMapping(value = "/template", method = RequestMethod.GET)

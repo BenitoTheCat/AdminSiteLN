@@ -308,5 +308,9 @@ public class PdfIndexerService {
         }
         return id;
     }
+    
+    public int countDocuments(String UserQuery) throws SolrServerException{
+        return solrConn.countDocuments(UserQuery);
+    }
 
 }
