@@ -48,8 +48,8 @@
             <!-- the class "active" is used to highlight the current/active linke -->
             <div id="nav">
                 <ul>
-                    <li class="active"><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Dashboard</a></li>
+                    <li class="active"><a href="<c:url value="/"/>" class="active">Home</a></li>
+                    <li><a href="<c:url value="/dashboard"/>">Dashboard</a></li>
                 </ul>
             </div> <!--  end div #nav -->
             <!--  END NAVIGATION -->

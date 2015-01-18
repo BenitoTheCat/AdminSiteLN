@@ -1,5 +1,6 @@
 com/lanacion/adminsiteln/controllers/DefaultController.class
 com/lanacion/adminsiteln/service/infografia/InfografiaServiceImpl.class
+com/lanacion/adminsiteln/controllers/AjaxController.class
 com/lanacion/adminsiteln/dao/infografiasrepository/InfografiasRepository.class
 com/lanacion/adminsiteln/config/Config.class
 com/lanacion/adminsiteln/services/PdfIndexerService/PdfIndexerService.class

@@ -64,6 +64,13 @@ public interface InfografiasRepository {
    
     /**
      *
+     * @param idInfografia
+     * @param estado
+     */
+    public void updateEstado(Integer idInfografia, Integer estado);
+   
+    /**
+     *
      * @param titulo
      * @param querysolr
      */

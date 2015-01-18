@@ -104,5 +104,13 @@ public class DefaultController {
        
        return "Donde borrado";
    }
+   
+   @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+   public String getHomeDashboard(ModelMap map) {
+       
+       map.put("list_infografias", infoService.listInfografias());
+       return "dashboard_home";
+   
+   }
     
 }

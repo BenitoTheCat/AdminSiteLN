@@ -58,5 +58,16 @@ public class AjaxController {
        }
        return 0;
    }
+   
+   @RequestMapping(value = "/ajax/updateEstado", method = RequestMethod.GET)
+   @ResponseBody
+   public int updateEstado(ModelMap map
+           ,@RequestParam(value = "estado", required = false) Integer estado
+           ,@RequestParam(value = "idInfografia", required = false) Integer idInfografia
+            ) {
+       
+       infoService.updateEstado(idInfografia, estado);
+       return 0;
+   }
     
 }

@@ -25,6 +25,15 @@
 
         <link href="resources/css/styles.css" rel="stylesheet" type="text/css" />
         <link href="resources/css/facebox.css" rel="stylesheet" type="text/css" />
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -40,7 +49,7 @@
             <div id="nav">
                 <ul>
                     <li class="active"><a href="<c:url value="/"/>" class="active">Home</a></li>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="<c:url value="/dashboard"/>">Dashboard</a></li>
                 </ul>
             </div> <!--  end div #nav -->
             <!--  END NAVIGATION -->

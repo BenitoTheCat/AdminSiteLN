@@ -49,8 +49,8 @@
                         <!-- the class "active" is used to highlight the current/active linke -->
                         <div id="nav">
                             <ul>
-                                <li><a href="#" class="active">Home</a></li>
-                                <li class="active"><a href="#" class="active">Dashboard</a></li>
+                                <li><a href="<c:url value="/"/>" class="active">Home</a></li>
+                                <li class="active"><a href="<c:url value="/dashboard"/>" class="active">Dashboard</a></li>
                             </ul>
                         </div> <!--  end div #nav -->
                         <!--  END NAVIGATION -->
@@ -190,7 +190,6 @@
                                 var titulo = $("#titulo_" + i).val();
 
                                 if (elemento.length > 0 && titulo.length > 0) {
-                                    alert($("#elemento_" + i).val());
                                     elementosArray.push($("#elemento_" + i).val());
                                     tituloArray.push($("#titulo_" + i).val());
                                 }
@@ -208,7 +207,7 @@
                                     
                                 },
                                 success: function (data) {
-                                    alert('funciona');
+                                    alert('Infografia Ingresada');
 
                                 },
                                 error: function () {

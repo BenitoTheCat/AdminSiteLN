@@ -33,4 +33,6 @@ public interface InfografiaService {
     public Integer getLastIdInfografia();
     
     public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden);
+    
+    public void updateEstado(Integer idInfografia, Integer estado);
 }

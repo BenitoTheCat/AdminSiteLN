@@ -90,4 +90,9 @@ public class InfografiaServiceImpl implements InfografiaService {
     public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden){
         infoRepo.createRelacionInfografiaVista(lastIdInfografia, lastIdVista, id_orden);
     }
+    
+    @Override
+    public void updateEstado(Integer idInfografia, Integer estado){
+        infoRepo.updateEstado(idInfografia, estado);
+    }
 }
