@@ -112,5 +112,13 @@ public class DefaultController {
        return "dashboard_home";
    
    }
+   
+   @RequestMapping(value = "/editInfografia", method = RequestMethod.GET)
+   public String editInfografia(ModelMap map, @RequestParam(value = "idInfo", required = true) int idInfo) {
+       
+       map.put("infografia", infoService.getInfografia(idInfo));
+       return "dashboard_edit";
+   
+   }
     
 }

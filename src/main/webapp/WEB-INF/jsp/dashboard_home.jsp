@@ -82,6 +82,8 @@
                                         <th>Fecha Creacion</th>
                                         <th>Fecha Modificacion</th>
                                         <th>Estado</th>
+                                        <th>Eliminar</th>
+                                        <th>Editar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,9 +99,15 @@
                                                         <a href="javascript:setDespublicar('${infografias.idInfografia}')" type="button" class="btn btn-success" >Publicado</a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <a href="javascript:setPublicar('${infografias.idInfografia}')" type="button" class="btn btn-info" >Edicion </a>
+                                                        <a href="javascript:setPublicar('${infografias.idInfografia}')" type="button" class="btn btn-info" >Edición </a>
                                                     </c:otherwise>
                                                 </c:choose>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:deleteInfografia('${infografias.idInfografia}')" type="button" class="btn btn-danger" >Eliminar </a>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:setPublicar('${infografias.idInfografia}')" type="button" class="btn btn-warning" >Editar </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -138,6 +146,25 @@
                                         },
                                     });
 
+                                }
+                                
+                                function deleteInfografia(idInfografia) {
+                                var result = confirm("Realmente quiere eliminar la infografia?");
+                                    if (result==true) {
+                                        $.ajax({
+                                            url: '<c:url value="/ajax/updateEstado"/>',
+                                            async: false,
+                                            data: {
+                                                estado: -1,
+                                                idInfografia: idInfografia
+                                            },
+                                            success: function (data) {
+                                                location.reload();
+                                            },
+                                            error: function () {
+                                            },
+                                        });
+                                    }
                                 }
 
                                 function setPublicar(idInfografia) {

@@ -60,7 +60,7 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
 
     @Override
     public InfografiaDocument getInfografia(Integer idInfografia) {
-        String SQL = "select * from Infografias where idInfografia = ?";
+        String SQL = "select * from Infografias where idInfografia = ? and estado >= 0";
         InfografiaDocument infografia = jdbcTemplateObject.queryForObject(SQL,
                 new Object[]{idInfografia}, new InfografiaMapper());
         return infografia;
@@ -68,7 +68,7 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
 
     @Override
     public List<InfografiaDocument> listInfografias() {
-        String SQL = "select * from Infografias order by fecha_modificacion desc";
+        String SQL = "select * from Infografias where estado >= 0 order by fecha_modificacion desc";
         List<InfografiaDocument> infografias = jdbcTemplateObject.query(SQL,
                 new InfografiaMapper());
         return infografias;
@@ -92,6 +92,13 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
     public void updateEstado(Integer idInfografia, Integer estado) {
         String SQL = "update Infografias set estado=? where idInfografia = ?";
         jdbcTemplateObject.update(SQL, estado, idInfografia);
+        System.out.println("Updated Record with ID = " + idInfografia);
+    }
+    
+    @Override
+    public void updateDescripcion(Integer idInfografia, String titulo, String descripcion) {
+        String SQL = "update Infografias set titulo=?, descripcion=? where idInfografia = ?";
+        jdbcTemplateObject.update(SQL, titulo, descripcion, idInfografia);
         System.out.println("Updated Record with ID = " + idInfografia);
     }
 

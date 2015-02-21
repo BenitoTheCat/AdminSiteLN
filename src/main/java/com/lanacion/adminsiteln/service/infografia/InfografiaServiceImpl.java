@@ -95,4 +95,9 @@ public class InfografiaServiceImpl implements InfografiaService {
     public void updateEstado(Integer idInfografia, Integer estado){
         infoRepo.updateEstado(idInfografia, estado);
     }
+    
+    @Override
+    public void updateDescripcion(Integer idInfografia, String titulo,String descripcion){
+        infoRepo.updateDescripcion(idInfografia, titulo, descripcion);
+    }
 }

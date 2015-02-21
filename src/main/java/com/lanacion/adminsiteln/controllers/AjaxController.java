@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
 import com.lanacion.adminsiteln.service.infografia.InfografiaService;
 import com.lanacion.adminsiteln.services.PdfIndexerService.PdfIndexerService;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -69,5 +70,37 @@ public class AjaxController {
        infoService.updateEstado(idInfografia, estado);
        return 0;
    }
+   
+   @RequestMapping(value = "/ajax/updateDescripcion", method = RequestMethod.GET)
+   @ResponseBody
+   public int updateDescripcion(ModelMap map
+           ,@RequestParam(value = "idInfografia", required = false) Integer idInfografia
+           ,@RequestParam(value = "titulo", required = false) String titulo
+           ,@RequestParam(value = "descripcion", required = false) String descripcion
+            ) throws UnsupportedEncodingException {
+       
+       
+       byte[] a1 = titulo.getBytes("ISO-8859-1");
+       String tituloUTF8 = new String(a1, "UTF-8");
+       
+       byte[] b1 = descripcion.getBytes("ISO-8859-1");
+       String descripcionUTF8 = new String(b1, "UTF-8");
+       
+       System.out.println("id: "+idInfografia + " titulo: " + tituloUTF8 + " descripcion: "+ descripcionUTF8);
+       infoService.updateDescripcion(idInfografia, tituloUTF8, descripcionUTF8);
+       return 0;
+   }
+   
+   /*
+   @RequestMapping(value = "/ajax/deleteInfografia", method = RequestMethod.GET)
+   @ResponseBody
+   public int deleteInfografia(ModelMap map
+           ,@RequestParam(value = "idInfografia", required = false) Integer idInfografia
+            ) {
+       
+       infoService.delete(idInfografia);
+       return 0;
+   }
+   */
     
 }
