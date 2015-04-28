@@ -100,4 +100,9 @@ public class InfografiaServiceImpl implements InfografiaService {
     public void updateDescripcion(Integer idInfografia, String titulo,String descripcion){
         infoRepo.updateDescripcion(idInfografia, titulo, descripcion);
     }
+    
+    @Override
+    public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code){
+        infoRepo.createVideo(url, servidor, autor, titulo, descripcion, comentarios, html_code);
+    }
 }

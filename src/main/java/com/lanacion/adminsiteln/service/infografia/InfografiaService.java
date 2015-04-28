@@ -37,4 +37,6 @@ public interface InfografiaService {
     public void updateEstado(Integer idInfografia, Integer estado);
     
     public void updateDescripcion(Integer idInfografia, String titulo,String descripcion);
+    
+    public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
 }

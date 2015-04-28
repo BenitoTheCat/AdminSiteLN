@@ -107,7 +107,7 @@
                                                 <a href="javascript:deleteInfografia('${infografias.idInfografia}')" type="button" class="btn btn-danger" >Eliminar </a>
                                             </td>
                                             <td>
-                                                <a href="javascript:setPublicar('${infografias.idInfografia}')" type="button" class="btn btn-warning" >Editar </a>
+                                                <a href="<c:url value="/editInfografia?idInfo=${infografias.idInfografia}"/>" type="button" class="btn btn-warning" >Editar </a>
                                             </td>
                                         </tr>
                                     </c:forEach>

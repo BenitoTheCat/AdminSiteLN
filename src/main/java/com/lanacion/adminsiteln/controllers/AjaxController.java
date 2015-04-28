@@ -45,14 +45,29 @@ public class AjaxController {
            ,@RequestParam(value = "titulos", required = false) String[] titulos
            ,@RequestParam(value = "titulo_info", required = false) String titulo_info
            ,@RequestParam(value = "descripcion_info", required = false) String descripcion_info
-            ) {
+            ) throws UnsupportedEncodingException {
        
-       infoService.create(titulo_info, descripcion_info, 0, 0);
+       
+         
+       byte[] a1 = titulo_info.getBytes("ISO-8859-1");
+       String titulo_infooUTF8 = new String(a1, "UTF-8");
+       
+       byte[] b1 = descripcion_info.getBytes("ISO-8859-1");
+       String ddescripcion_infoUTF8 = new String(b1, "UTF-8");
+       
+       infoService.create(titulo_infooUTF8, ddescripcion_infoUTF8, 0, 0);
        Integer lastIdInfografia  = infoService.getLastIdInfografia();
        System.out.println("El ultimo id ingresado en infografia es: "+ lastIdInfografia);
        for(int i = 0;i<elementos.length;i++){
+           
+           byte[] ai = titulos[i].getBytes("ISO-8859-1");
+           String tituloiUTF8 = new String(ai, "UTF-8");
+       
+           byte[] bi = elementos[i].getBytes("ISO-8859-1");
+           String diUTF8 = new String(bi, "UTF-8");
+       
            System.out.println("Elemento: "+elementos[i] + " Titulo: "+titulos[i]);
-           infoService.createVistas(titulos[i], elementos[i]);
+           infoService.createVistas(tituloiUTF8, diUTF8);
            Integer lastidVista = infoService.getLastIdVista();
            System.out.println("El ultimo id ingresado es: "+lastidVista);
            infoService.createRelacionInfografiaVista(lastIdInfografia, lastidVista, i);
@@ -88,6 +103,45 @@ public class AjaxController {
        
        System.out.println("id: "+idInfografia + " titulo: " + tituloUTF8 + " descripcion: "+ descripcionUTF8);
        infoService.updateDescripcion(idInfografia, tituloUTF8, descripcionUTF8);
+       return 0;
+   }
+   
+   @RequestMapping(value = "/ajax/createVideo", method = RequestMethod.GET)
+   @ResponseBody
+   public int createVideo(ModelMap map
+          ,@RequestParam(value = "titulo_video", required = false) String titulo
+           ,@RequestParam(value = "descripcion_video", required = false) String descripcion
+           ,@RequestParam(value = "url_video", required = false) String url
+           ,@RequestParam(value = "servidor_video", required = false) String servidor
+           ,@RequestParam(value = "autor_video", required = false) String autor
+           ,@RequestParam(value = "comentarios_video", required = false) String comentarios
+           ,@RequestParam(value = "html_video", required = false) String html
+            ) throws UnsupportedEncodingException {
+       
+       
+       byte[] a1 = titulo.getBytes("ISO-8859-1");
+       String tituloUTF8 = new String(a1, "UTF-8");
+       
+       byte[] b1 = descripcion.getBytes("ISO-8859-1");
+       String descripcionUTF8 = new String(b1, "UTF-8");
+       
+       byte[] c1 = url.getBytes("ISO-8859-1");
+       String urlUTF8 = new String(c1, "UTF-8");
+       
+       byte[] d1 = servidor.getBytes("ISO-8859-1");
+       String servidorUTF8 = new String(d1, "UTF-8");
+       
+       byte[] e1 = autor.getBytes("ISO-8859-1");
+       String autorUTF8 = new String(e1, "UTF-8");
+       
+       byte[] f1 = comentarios.getBytes("ISO-8859-1");
+       String comentariosUTF8 = new String(f1, "UTF-8");
+       
+       byte[] g1 = html.getBytes("ISO-8859-1");
+       String htmlUTF8 = new String(g1, "UTF-8");
+       
+    
+       infoService.createVideo( urlUTF8,  servidorUTF8,  autorUTF8,  tituloUTF8,  descripcionUTF8,  comentariosUTF8,  htmlUTF8);
        return 0;
    }
    

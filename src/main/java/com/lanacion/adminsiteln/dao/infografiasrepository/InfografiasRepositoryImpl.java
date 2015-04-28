@@ -87,14 +87,14 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
         jdbcTemplateObject.update(SQL, titulo, descripcion, tipo_infografia, estado, idInfografia);
         System.out.println("Updated Record with ID = " + idInfografia);
     }
-    
+
     @Override
     public void updateEstado(Integer idInfografia, Integer estado) {
         String SQL = "update Infografias set estado=? where idInfografia = ?";
         jdbcTemplateObject.update(SQL, estado, idInfografia);
         System.out.println("Updated Record with ID = " + idInfografia);
     }
-    
+
     @Override
     public void updateDescripcion(Integer idInfografia, String titulo, String descripcion) {
         String SQL = "update Infografias set titulo=?, descripcion=? where idInfografia = ?";
@@ -102,35 +102,53 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
         System.out.println("Updated Record with ID = " + idInfografia);
     }
 
-    @Override 
+    @Override
     public void createVistas(String titulo, String querysolr) {
         String SQL = "insert into Vistas (titulo,fecha_creacion,querysolr) values (?, sysdate(), ?)";
         jdbcTemplateObject.update(SQL, titulo, querysolr);
         System.out.println("Created Record Titulo = " + titulo + " QuerySolr = " + querysolr);
     }
-    
+
     @Override
     public Integer getLastIdVista() {
         String SQL = "SELECT idVista FROM Vistas ORDER BY idVista DESC LIMIT 1";
-        Integer lastid =jdbcTemplateObject.queryForObject(SQL, Integer.class);
+        Integer lastid = jdbcTemplateObject.queryForObject(SQL, Integer.class);
         System.out.println("LastID Vista = " + lastid);
         return lastid;
     }
-    
+
     @Override
     public Integer getLastIdInfografia() {
         String SQL = "SELECT idInfografia FROM Infografias ORDER BY idInfografia DESC LIMIT 1";
-        Integer lastid =jdbcTemplateObject.queryForObject(SQL, Integer.class);
+        Integer lastid = jdbcTemplateObject.queryForObject(SQL, Integer.class);
         System.out.println("LastID Infografia = " + lastid);
         return lastid;
     }
-    
-    @Override 
+
+    @Override
     public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden) {
         String SQL = "insert into Infografias_orden (idInfografia,idVista,orden_vista) values (?, ?, ?)";
-        jdbcTemplateObject.update(SQL, lastIdInfografia, lastIdVista,id_orden);
-        System.out.println("Created Record idInfografia = " + lastIdInfografia + " idVista = " + lastIdVista + " Orden: "+ id_orden);
+        jdbcTemplateObject.update(SQL, lastIdInfografia, lastIdVista, id_orden);
+        System.out.println("Created Record idInfografia = " + lastIdInfografia + " idVista = " + lastIdVista + " Orden: " + id_orden);
     }
 
+    @Override
+    public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code) {
+        Integer lastIdVideo = getLastIdVideo();
+        String SQL = "insert into videos (idVideo, url, servidor, autor, titulo, descripcion, comentarios, html_code) values (?,?,?,?,?,?,?,?)";
+        jdbcTemplateObject.update(SQL, lastIdVideo, url, servidor, autor, titulo, descripcion, comentarios, html_code);
+        System.out.println("Created Record idVideo = " + lastIdVideo + " titulo = " + titulo + " descripcion: " + descripcion);
+    }
+
+    public Integer getLastIdVideo() {
+        String SQL = "SELECT idVideo FROM videos ORDER BY idVideo DESC LIMIT 1";
+        try {
+            Integer lastid = jdbcTemplateObject.queryForObject(SQL, Integer.class);
+            System.out.println("LastID Video = " + lastid);
+            return lastid;
+        } catch (Exception e) {
+            return 1;
+        }
+    }
 
 }

@@ -120,5 +120,12 @@ public class DefaultController {
        return "dashboard_edit";
    
    }
+   
+   @RequestMapping(value = "/createVideo", method = RequestMethod.GET)
+   public String createVideo(ModelMap map) {
+       
+       return "dashboard_create_video";
+   
+   }
     
 }

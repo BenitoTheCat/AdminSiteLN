@@ -104,4 +104,15 @@ public interface InfografiasRepository {
      */
     public void createRelacionInfografiaVista(Integer lastIdInfografia, Integer lastIdVista, Integer id_orden);
     
+    /**
+     * 
+     * @param url
+     * @param servidor
+     * @param autor
+     * @param titulo
+     * @param descripcion
+     * @param comentarios
+     * @param html_code 
+     */
+    public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
 }
