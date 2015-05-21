@@ -127,5 +127,13 @@ public class DefaultController {
        return "dashboard_create_video";
    
    }
+   
+   @RequestMapping(value = "/home_video", method = RequestMethod.GET)
+   public String homeVideo(ModelMap map) {
+       
+       map.put("list_videos", infoService.listVideos());
+       return "video_home";
+   
+   }
     
 }

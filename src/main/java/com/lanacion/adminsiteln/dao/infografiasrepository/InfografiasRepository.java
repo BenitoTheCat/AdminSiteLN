@@ -6,6 +6,7 @@
 package com.lanacion.adminsiteln.dao.infografiasrepository;
 
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
+import com.lanacion.adminsiteln.model.video.VideoDocument;
 import java.util.List;
 import javax.sql.DataSource;
 
@@ -115,4 +116,10 @@ public interface InfografiasRepository {
      * @param html_code 
      */
     public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
+    
+    /**
+     *
+     * @return
+     */
+    public List<VideoDocument> listVideos();
 }

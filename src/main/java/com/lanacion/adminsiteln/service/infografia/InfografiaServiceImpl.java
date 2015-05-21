@@ -7,6 +7,7 @@ package com.lanacion.adminsiteln.service.infografia;
 
 import com.lanacion.adminsiteln.dao.infografiasrepository.InfografiasRepository;
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
+import com.lanacion.adminsiteln.model.video.VideoDocument;
 import com.lanacion.adminsiteln.services.PdfIndexerService.PdfIndexerService;
 import java.util.List;
 import java.util.logging.Level;
@@ -44,6 +45,11 @@ public class InfografiaServiceImpl implements InfografiaService {
     @Override
     public List<InfografiaDocument> listInfografias() {
         return infoRepo.listInfografias();        
+    }
+    
+    @Override
+    public List<VideoDocument> listVideos() {
+        return infoRepo.listVideos();        
     }
 
     @Override

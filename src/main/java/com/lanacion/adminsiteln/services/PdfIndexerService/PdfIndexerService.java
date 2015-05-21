@@ -213,7 +213,7 @@ public class PdfIndexerService {
 
     public LaNacionDocument getDocumentFromPDF(int pagina, String file, String diarioString, int edicion) throws ParseException {
         LaNacionDocument lnd = new LaNacionDocument();
-
+        
         //Se setean los atributos de la clase LaNancionDocument para luego indexarlos
         String id = getIDString(file, pagina);
         lnd.setId(id);

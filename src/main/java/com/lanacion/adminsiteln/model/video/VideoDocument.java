@@ -26,6 +26,16 @@ public class VideoDocument {
     private String comentarios;
     
     private String html_code;
+    
+    private int publicado;
+
+    public int getPublicado() {
+        return publicado;
+    }
+
+    public void setPublicado(int publicado) {
+        this.publicado = publicado;
+    }
 
     public Integer getIdVideo() {
         return idVideo;

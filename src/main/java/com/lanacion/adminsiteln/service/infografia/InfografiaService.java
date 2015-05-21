@@ -6,6 +6,7 @@
 package com.lanacion.adminsiteln.service.infografia;
 
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
+import com.lanacion.adminsiteln.model.video.VideoDocument;
 import java.util.List;
 
 /**
@@ -17,6 +18,8 @@ public interface InfografiaService {
     public InfografiaDocument getInfografia(Integer idInfografia);
     
     public List<InfografiaDocument> listInfografias();
+    
+    public List<VideoDocument> listVideos();
     
     public void create(String titulo, String descripcion, Integer tipo_infografia, Integer estado);
     

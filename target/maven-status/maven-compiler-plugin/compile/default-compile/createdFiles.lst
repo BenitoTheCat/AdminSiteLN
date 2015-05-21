@@ -6,6 +6,7 @@ com\lanacion\adminsiteln\service\infografia\InfografiaServiceImpl.class
 com\lanacion\adminsiteln\service\infografia\InfografiaService.class
 com\lanacion\adminsiteln\dao\infografiasrepository\InfografiasRepositoryImpl.class
 com\lanacion\adminsiteln\controllers\AjaxController.class
+com\lanacion\adminsiteln\dao\infografiasrepository\VideoMapper.class
 com\lanacion\adminsiteln\services\PdfIndexerService\PdfIndexerService.class
 com\lanacion\adminsiteln\config\Config.class
 com\lanacion\adminsiteln\model\lndocument\LaNacionDocument.class

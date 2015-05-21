@@ -6,6 +6,7 @@
 package com.lanacion.adminsiteln.dao.infografiasrepository;
 
 import com.lanacion.adminsiteln.model.infografia.InfografiaDocument;
+import com.lanacion.adminsiteln.model.video.VideoDocument;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -97,7 +98,7 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
 
     @Override
     public void updateDescripcion(Integer idInfografia, String titulo, String descripcion) {
-        String SQL = "update Infografias set titulo=?, descripcion=? where idInfografia = ?";
+        String SQL = "update Infografias set titulo=?, descripcion=?,  where idInfografia = ?";
         jdbcTemplateObject.update(SQL, titulo, descripcion, idInfografia);
         System.out.println("Updated Record with ID = " + idInfografia);
     }
@@ -145,10 +146,18 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
         try {
             Integer lastid = jdbcTemplateObject.queryForObject(SQL, Integer.class);
             System.out.println("LastID Video = " + lastid);
-            return lastid;
+            return lastid+1;
         } catch (Exception e) {
             return 1;
         }
+    }
+    
+    @Override
+    public List<VideoDocument> listVideos() {
+        String SQL = "select * from videos order by idVideo desc";
+        List<VideoDocument> infografias = jdbcTemplateObject.query(SQL,
+                new VideoMapper());
+        return infografias;
     }
 
 }
