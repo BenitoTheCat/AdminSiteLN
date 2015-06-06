@@ -49,8 +49,9 @@
                         <!-- the class "active" is used to highlight the current/active linke -->
                         <div id="nav">
                             <ul>
-                                <li><a href="<c:url value="/"/>" class="active">Home</a></li>
-                                <li class="active"><a href="<c:url value="/dashboard"/>" class="active">Dashboard</a></li>
+                                <li><a href="<c:url value="/"/>" class="active">PDF</a></li>
+                                <li><a href="<c:url value="/dashboard"/>" class="active">Infografía</a></li>
+                                <li class="active"><a href="<c:url value="/home_video"/>" class="active">Video</a></li>
                             </ul>
                         </div> <!--  end div #nav -->
                         <!--  END NAVIGATION -->
@@ -182,7 +183,7 @@
                                     
                                 },
                                 success: function (data) {
-                                    alert('Infografia actualizada');
+                                    alert('Video guardado');
 
                                 },
                                 error: function () {

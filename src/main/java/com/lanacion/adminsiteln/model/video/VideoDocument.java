@@ -5,6 +5,8 @@
  */
 package com.lanacion.adminsiteln.model.video;
 
+import java.util.Date;
+
 /**
  *
  * @author Luxo
@@ -28,6 +30,16 @@ public class VideoDocument {
     private String html_code;
     
     private int publicado;
+    
+    private Date fecha;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
     public int getPublicado() {
         return publicado;

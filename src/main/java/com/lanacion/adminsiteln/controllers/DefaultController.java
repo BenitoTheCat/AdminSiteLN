@@ -135,5 +135,13 @@ public class DefaultController {
        return "video_home";
    
    }
+   
+   @RequestMapping(value = "/editVideo", method = RequestMethod.GET)
+   public String editVideo(ModelMap map, @RequestParam(value = "idInfo", required = true) int idInfo) {
+       
+       map.put("infografia", infoService.getVideo(idInfo));
+       return "dashboard_edit_video";
+   
+   }
     
 }

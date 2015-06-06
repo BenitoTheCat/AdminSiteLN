@@ -39,6 +39,12 @@ public interface InfografiasRepository {
      * @return 
     */
    public InfografiaDocument getInfografia(Integer id);
+   /**
+    * 
+    * @param id
+    * @return 
+    */
+   public VideoDocument getVideo(Integer id);
    /** 
     * This is the method to be used to list down
     * all the records from the Student table.
@@ -69,6 +75,19 @@ public interface InfografiasRepository {
      * @param estado
      */
     public void updateEstado(Integer idInfografia, Integer estado);
+    
+    /**
+     * 
+     * @param idVideo
+     * @param estado 
+     */
+    public void updateEstadoVideo(Integer idVideo, Integer estado);
+    
+    /**
+     * 
+     * @param idVideo 
+     */
+    public void deleteVideo(Integer idVideo);
     
     /**
      *
@@ -116,6 +135,19 @@ public interface InfografiasRepository {
      * @param html_code 
      */
     public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
+    
+    /**
+     * 
+     * @param idVideo
+     * @param url
+     * @param servidor
+     * @param autor
+     * @param titulo
+     * @param descripcion
+     * @param comentarios
+     * @param html_code 
+     */
+    public void editVideo(int idVideo,String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
     
     /**
      *

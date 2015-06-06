@@ -27,6 +27,8 @@ public class VideoMapper  implements RowMapper<VideoDocument> {
         video.setDescripcion(rs.getString("descripcion"));
         video.setComentarios(rs.getString("comentarios"));
         video.setPublicado(rs.getInt("publicado"));
+        video.setHtml_code(rs.getString("html_code"));
+        video.setFecha(rs.getDate("fecha"));
         return video;
     }
 

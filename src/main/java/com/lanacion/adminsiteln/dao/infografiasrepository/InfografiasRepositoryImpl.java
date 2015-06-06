@@ -66,6 +66,14 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
                 new Object[]{idInfografia}, new InfografiaMapper());
         return infografia;
     }
+    
+    @Override
+    public VideoDocument getVideo(Integer idVideo) {
+        String SQL = "select * from videos where idVideo = ?";
+        VideoDocument video = jdbcTemplateObject.queryForObject(SQL,
+                new Object[]{idVideo}, new VideoMapper());
+        return video;
+    }
 
     @Override
     public List<InfografiaDocument> listInfografias() {
@@ -94,6 +102,20 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
         String SQL = "update Infografias set estado=? where idInfografia = ?";
         jdbcTemplateObject.update(SQL, estado, idInfografia);
         System.out.println("Updated Record with ID = " + idInfografia);
+    }
+    
+    @Override
+    public void updateEstadoVideo(Integer idVideo, Integer estado) {
+        String SQL = "update videos set publicado=? where idVideo = ?";
+        jdbcTemplateObject.update(SQL, estado, idVideo);
+        System.out.println("Updated Record with ID = " + idVideo);
+    }
+    
+    @Override
+    public void deleteVideo(Integer idVideo){
+        String SQL = "delete from videos where idVideo =?";
+        jdbcTemplateObject.update(SQL, idVideo);
+        System.out.println("Video borrado con id:" + idVideo);
     }
 
     @Override
@@ -139,6 +161,14 @@ public class InfografiasRepositoryImpl implements InfografiasRepository {
         String SQL = "insert into videos (idVideo, url, servidor, autor, titulo, descripcion, comentarios, html_code) values (?,?,?,?,?,?,?,?)";
         jdbcTemplateObject.update(SQL, lastIdVideo, url, servidor, autor, titulo, descripcion, comentarios, html_code);
         System.out.println("Created Record idVideo = " + lastIdVideo + " titulo = " + titulo + " descripcion: " + descripcion);
+    }
+    
+    @Override
+    public void editVideo(int idVideo, String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code) {
+        
+        String SQL = "update videos set url=?, servidor=?, autor=?, titulo=?, descripcion=?, comentarios=?, html_code=? where idVideo=?";
+        jdbcTemplateObject.update(SQL, url, servidor, autor, titulo, descripcion, comentarios, html_code,idVideo);
+        System.out.println("Edited Record idVideo = " + idVideo + " titulo = " + titulo + " descripcion: " + descripcion);
     }
 
     public Integer getLastIdVideo() {

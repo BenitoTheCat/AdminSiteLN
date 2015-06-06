@@ -51,7 +51,7 @@
                 <ul>
                     <li><a href="<c:url value="/"/>" class="active">PDF</a></li>
                     <li><a href="<c:url value="/dashboard"/>" class="active">Infografía</a></li>
-                    <li class="active"><a href="<c:url value="/video"/>" class="active">Video</a></li>
+                    <li class="active"><a href="<c:url value="/home_video"/>" class="active">Video</a></li>
                 </ul>
             </div> <!--  end div #nav -->
             <!--  END NAVIGATION -->
@@ -82,6 +82,7 @@
                                         <th>#</th>
                                         <th>Titulo</th>
                                         <th>Servidor</th>
+                                        <th>Fecha</th>
                                         <th>Estado</th>
                                         <th>Eliminar</th>
                                         <th>Editar</th>
@@ -93,6 +94,7 @@
                                             <th scope="row">${docNum.count}</th>
                                             <td><c:out escapeXml="false" value="${infografias.titulo}"/></td>
                                             <td><c:out escapeXml="false" value="${infografias.servidor}"/></td>
+                                            <td><c:out escapeXml="false" value="${infografias.fecha}"/></td>
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${infografias.publicado==1}">
@@ -104,10 +106,10 @@
                                                 </c:choose>
                                             </td>
                                             <td>
-                                                <a href="javascript:deleteInfografia('${infografias.idVideo}')" type="button" class="btn btn-danger" >Eliminar </a>
+                                                <a href="javascript:deleteVideo('${infografias.idVideo}')" type="button" class="btn btn-danger" >Eliminar </a>
                                             </td>
                                             <td>
-                                                <a href="<c:url value="/editInfografia?idInfo=${infografias.idVideo}"/>" type="button" class="btn btn-warning" >Editar </a>
+                                                <a href="<c:url value="/editVideo?idInfo=${infografias.idVideo}"/>" type="button" class="btn btn-warning" >Editar </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -131,13 +133,13 @@
 
                             <script>
 
-                                function setDespublicar(idInfografia) {
+                                function setDespublicar(idVideo) {
                                     $.ajax({
-                                        url: '<c:url value="/ajax/updateEstado"/>',
+                                        url: '<c:url value="/ajax/updatePublicadoVideo"/>',
                                         async: false,
                                         data: {
                                             estado: 0,
-                                            idInfografia: idInfografia
+                                            idVideo: idVideo,
                                         },
                                         success: function (data) {
                                             location.reload();
@@ -148,15 +150,14 @@
 
                                 }
                                 
-                                function deleteInfografia(idInfografia) {
+                                function deleteVideo(idVideo) {
                                 var result = confirm("Realmente quiere eliminar la infografia?");
                                     if (result==true) {
                                         $.ajax({
-                                            url: '<c:url value="/ajax/updateEstado"/>',
+                                            url: '<c:url value="/ajax/deleteVideo"/>',
                                             async: false,
                                             data: {
-                                                estado: -1,
-                                                idInfografia: idInfografia
+                                                idVideo: idVideo,
                                             },
                                             success: function (data) {
                                                 location.reload();
@@ -167,13 +168,13 @@
                                     }
                                 }
 
-                                function setPublicar(idInfografia) {
+                                function setPublicar(idVideo) {
                                     $.ajax({
-                                        url: '<c:url value="/ajax/updateEstado"/>',
+                                        url: '<c:url value="/ajax/updatePublicadoVideo"/>',
                                         async: false,
                                         data: {
                                             estado: 1,
-                                            idInfografia: idInfografia
+                                            idVideo: idVideo,
                                         },
                                         success: function (data) {
                                             location.reload();

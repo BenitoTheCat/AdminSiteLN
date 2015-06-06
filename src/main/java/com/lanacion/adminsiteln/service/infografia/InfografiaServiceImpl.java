@@ -41,6 +41,11 @@ public class InfografiaServiceImpl implements InfografiaService {
     public InfografiaDocument getInfografia(Integer idInfografia) {
         return infoRepo.getInfografia(idInfografia);
     }
+    
+    @Override
+    public VideoDocument getVideo(Integer idVideo) {
+        return infoRepo.getVideo(idVideo);
+    }
 
     @Override
     public List<InfografiaDocument> listInfografias() {
@@ -103,6 +108,16 @@ public class InfografiaServiceImpl implements InfografiaService {
     }
     
     @Override
+    public void deleteVideo(Integer idVideo){
+        infoRepo.deleteVideo(idVideo);
+    }
+    
+    @Override
+    public void updateEstadoVideo(Integer idVideo, Integer estado){
+        infoRepo.updateEstadoVideo(idVideo, estado);
+    }
+    
+    @Override
     public void updateDescripcion(Integer idInfografia, String titulo,String descripcion){
         infoRepo.updateDescripcion(idInfografia, titulo, descripcion);
     }
@@ -110,5 +125,10 @@ public class InfografiaServiceImpl implements InfografiaService {
     @Override
     public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code){
         infoRepo.createVideo(url, servidor, autor, titulo, descripcion, comentarios, html_code);
+    }
+    
+    @Override
+    public void editVideo(int idVideo, String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code){
+        infoRepo.editVideo(idVideo, url, servidor, autor, titulo, descripcion, comentarios, html_code);
     }
 }

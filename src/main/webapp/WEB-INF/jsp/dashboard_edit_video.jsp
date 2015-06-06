@@ -49,9 +49,9 @@
                         <!-- the class "active" is used to highlight the current/active linke -->
                         <div id="nav">
                             <ul>
-                                 <li><a href="<c:url value="/"/>" class="active">PDF</a></li>
-                                 <li class="active"><a href="<c:url value="/dashboard"/>" class="active">Infografía</a></li>
-                                 <li><a href="<c:url value="/home_video"/>" class="active">Video</a></li>
+                                <li><a href="<c:url value="/"/>" class="active">PDF</a></li>
+                                <li><a href="<c:url value="/dashboard"/>" class="active">Infografía</a></li>
+                                <li class="active"><a href="<c:url value="/home_video"/>" class="active">Video</a></li>
                             </ul>
                         </div> <!--  end div #nav -->
                         <!--  END NAVIGATION -->
@@ -69,18 +69,30 @@
 
                             <!--  START PRIMARY CONTENT -->
                             <div id="primary_content">
-                                <h2>Edición infografias</h2>
+                                <h2>Editar Video</h2>
                                 
                                 <div id="descripcion" class="divDescripcion">
                                     <label for="male">Titulo</label><br>
-                                    <input type="text" name="titulo_info" id="titulo_info" value="${infografia.titulo}"><br>
+                                    <input type="text" name="titulo_video" id="titulo_video" value="${infografia.titulo}"><br>
                                     <label for="female">Descripcion</label><br>
-                                    <textarea  rows="5" cols="83" name="descripcion_info" id="descripcion_info">${infografia.descripcion}</textarea>
+                                    <textarea  rows="5" cols="83" name="descripcion_video" id="descripcion_video">${infografia.descripcion}</textarea><br>
+                                    <label for="male">URL</label><br>
+                                    <input type="text" name="url_video" id="url_video" value="${infografia.url}"><br>
+                                    <label for="male">Servidor</label><br>
+                                    <input type="text" name="servidor_video" id="servidor_video" value="${infografia.servidor}"><br>
+                                    <label for="male">Autor</label><br>
+                                    <input type="text" name="autor_video" id="autor_video" value="${infografia.autor}"><br>
+                                    <label for="male">Comentarios</label><br>
+                                    <input type="text" name="comentarios_video" id="comentarios_video" value="${infografia.comentarios}"><br>
+                                    <label for="male">Codigo HTML</label><br>
+                                        <input type="text" name="html_video" id="html_video" value="<c:out escapeXml="true" value="${infografia.html_code}"/>"><br>
+                                    <br>
+                                    <br>
                                     
                                 </div>
 
                                
-                                <button onclick="actualizarContenido()">Guardar</button>
+                                <button onclick="editarVideo()">Guardar</button>
                             </div><!--  end div #primary_content -->
                             <!--  END PRIMARY CONTENT -->
                             
@@ -143,31 +155,44 @@
                     }
 
 
-                    function actualizarContenido() {
+                    
+                    function editarVideo() {
 
+                        var idVideo = ${infografia.idVideo};
+                        var titulo_video = $("#titulo_video").val();
+                        var descripcion_video = $("#descripcion_video").val();
+                        var url_video = $("#url_video").val();
+                        var servidor_video = $("#servidor_video").val();
+                        var autor_video = $("#autor_video").val();
+                        var comentarios_video = $("#comentarios_video").val();
+                        var html_video = $("#html_video").val();
                         
-                        var titulo_info = $("#titulo_info").val();
-                        var descripcion_info = $("#descripcion_info").val();
-
                         
-                        if(titulo_info.length>0 && descripcion_info.length>0){
+                        if(titulo_video.length>0 && descripcion_video.length>0 && url_video.length>0 && servidor_video.length>0 && autor_video.length>0 && html_video.length>0){
                             $.ajax({
-                                url: '<c:url value="/ajax/updateDescripcion"/>',
+                                url: '<c:url value="/ajax/editVideo"/>',
                                 async: false,
                                 data: {
-                                    idInfografia: ${infografia.idInfografia},
-                                    titulo: titulo_info,
-                                    descripcion: descripcion_info
+                                    idVideo : idVideo,
+                                    titulo_video: titulo_video,
+                                    descripcion_video: descripcion_video,
+                                    url_video: url_video,
+                                    servidor_video: servidor_video,
+                                    autor_video: autor_video,
+                                    comentarios_video: comentarios_video,
+                                    html_video: html_video,
+                                    
                                 },
                                 success: function (data) {
-                                    alert('Infografia actualizada');
+                                    alert('Video actualizado');
 
                                 },
                                 error: function () {
+                                    alert('Ocurrio un error guardando el video');
                                 },
                             });
                         }else{
-                                alert("Necesitas completar el titulo y descripcion de la infografia");
+                                alert("Necesitas completar los campos para poder subir el video al sitio");
                         }
 
                     }

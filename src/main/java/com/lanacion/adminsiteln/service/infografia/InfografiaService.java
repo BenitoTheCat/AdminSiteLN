@@ -17,6 +17,8 @@ public interface InfografiaService {
 
     public InfografiaDocument getInfografia(Integer idInfografia);
     
+    public VideoDocument getVideo(Integer idVideo);
+    
     public List<InfografiaDocument> listInfografias();
     
     public List<VideoDocument> listVideos();
@@ -39,7 +41,13 @@ public interface InfografiaService {
     
     public void updateEstado(Integer idInfografia, Integer estado);
     
+    public void updateEstadoVideo(Integer idVideo, Integer estado);
+    
+    public void deleteVideo(Integer idVideo);
+    
     public void updateDescripcion(Integer idInfografia, String titulo,String descripcion);
     
     public void createVideo(String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
+    
+    public void editVideo(int idvideo, String url, String servidor, String autor, String titulo, String descripcion, String comentarios, String html_code);
 }
